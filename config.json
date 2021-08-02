@@ -1,0 +1,151 @@
+{
+    "KIT0021": {
+        "active": true,
+        "unit": "C",
+        "data": [
+            24,
+            32
+        ],
+        "type": "range-dec",
+        "experimental": false
+    },
+    "SEN0257": {
+        "active": true,
+        "unit": "kPa",
+        "data": [
+            0,
+            14
+        ],
+        "type": "range",
+        "experimental": false
+    },
+    "SEN0140": {
+        "active": true,
+        "unit": "Degree",
+        "experimental": false
+    },
+    "SEN0165": {
+        "active": true,
+        "unit": "mV",
+        "data": [
+            0,
+            450
+        ],
+        "type": "range",
+        "experimental": false
+    },
+    "SEN0169": {
+        "active": true,
+        "unit": "pH",
+        "data": [
+            0,
+            14
+        ],
+        "type": "range",
+        "experimental": false
+    },
+    "SEN0161-V2": {
+        "active": true,
+        "unit": "pH",
+        "data": [
+            0,
+            14
+        ],
+        "type": "range",
+        "experimental": false
+    },
+    "DFR0300": {
+        "active": true,
+        "unit": "S/m",
+        "data": [
+            0,
+            14
+        ],
+        "type": "range",
+        "experimental": false
+    },
+    "SEN0175": {
+        "active": true,
+        "unit": "mW/cm2",
+        "data": [
+            0,
+            14
+        ],
+        "type": "range",
+        "experimental": false
+    },
+    "TEL0097": {
+        "active": true,
+        "unit": "Lat/Long",
+        "data": [
+            0,
+            14
+        ],
+        "type": "geo",
+        "experimental": false
+    },
+    "TEL0113": {
+        "active": true,
+        "unit": null,
+        "data": [
+            0,
+            14
+        ],
+        "type": "range",
+        "experimental": false
+    },
+    "SEN0236": {
+        "active": true,
+        "unit": [
+            "hPa",
+            "C",
+            "RH"
+        ],
+        "data": [
+            0,
+            14
+        ],
+        "type": "range",
+        "experimental": false
+    },
+    "SEN0228": {
+        "active": true,
+        "unit": "lx",
+        "data": [
+            0,
+            107527
+        ],
+        "type": "range-dec",
+        "experimental": false
+    },
+    "SEN0237-A": {
+        "active": true,
+        "unit": "mg/L",
+        "data": [
+            0,
+            14
+        ],
+        "type": "range",
+        "experimental": false
+    },
+    "SEN0216": {
+        "active": true,
+        "unit": "A",
+        "data": [
+            0,
+            14
+        ],
+        "type": "range",
+        "experimental": true
+    },
+    "SEN0xxx": {
+        "active": false,
+        "unit": "C",
+        "data": [
+            0,
+            14
+        ],
+        "type": "range",
+        "experimental": true
+    }
+}
