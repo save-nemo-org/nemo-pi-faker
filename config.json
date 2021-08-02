@@ -77,10 +77,7 @@
     "TEL0097": {
         "active": true,
         "unit": "Lat/Long",
-        "data": [
-            0,
-            14
-        ],
+        "data": null,
         "type": "geo",
         "experimental": false
     },
