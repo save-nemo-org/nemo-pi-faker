@@ -1,4 +1,7 @@
+#!/usr/bin/env python3
+
 import json
+import sys
 from faker import Faker
 import random
 
@@ -55,6 +58,12 @@ class PiData:
             return "Sensor not found"
 
 
-test = PiData()
 
-print(test.get_sensor_data("SEN0228"))
+def main():
+
+    sensor_id = sys.argv[1]
+    fakeData = PiData()
+    sys.stdout.write(fakeData.get_sensor_data(sensor_id))
+
+
+main()
