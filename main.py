@@ -4,6 +4,7 @@ import json
 import sys
 from faker import Faker
 import random
+import string
 
 
 class PiData:
@@ -27,10 +28,50 @@ class PiData:
         except:
             return "Error reading config"
 
+    def buoy_info(self):
+
+       # for sensor in self.config_data:
+        # print(sensor)
+
+        buoy_data = {
+            "serial_number": ''.join(random.choices(string.ascii_letters + string.digits, k=16)),
+            "ip_address": self.fake.ipv4(),
+            "battery_level": "{:.2f}".format(random.uniform(0.00, 100.00)),
+            "gsm_strength": "-95.4",
+            "latitude": "-36.804215",
+            "longitude": "174.842076",
+            "solar_voltage": "{:.2f}".format(random.uniform(0, 12.5)),
+            "solar_amperage": "{:.2f}".format(random.uniform(0, 2.5)),
+            "measurements": [self.__get_sensor(sensor) for sensor in self.config_data]
+        }
+
+        return json.dumps(buoy_data)
+
+    def __get_sensor(self, sensor_id):
+
+        sensor = self.config_data[sensor_id]
+
+        return {
+
+            "sensor": {
+                "correction_value": "{:.2f}".format(random.uniform(0.00, 10.00)),
+                "details": {
+                    "name": sensor["name"],
+                    "unit": sensor["unit"]
+                },
+                "serial_number": ''.join(random.choices(string.ascii_letters + string.digits, k=16)),
+                "name": sensor["name"]
+            },
+            "value":self.__get_sensor_data(sensor_id),
+            "error_text":""
+
+
+        }
+
     def sensor_connected(self, sensor_id):
         return self.config_data[sensor_id]['active']
 
-    def get_sensor_data(self, sensor_id):
+    def __get_sensor_data(self, sensor_id):
 
         try:
             sensor = self.config_data[sensor_id]
@@ -58,12 +99,12 @@ class PiData:
             return "Sensor not found"
 
 
-
 def main():
 
-    sensor_id = sys.argv[1]
+    #sensor_id = sys.argv[1]
     fakeData = PiData()
-    sys.stdout.write(fakeData.get_sensor_data(sensor_id))
+    print(fakeData.buoy_info())
+    # sys.stdout.write(fakeData.get_sensor_data(sensor_id))
 
 
 main()
