@@ -31,10 +31,10 @@ class PiData:
         except:
             return "Error reading config"
 
-    def get_timezone(self,lat,lng):
-        geonames_client = geonames.GeonamesClient('piData')
-        timezone = geonames_client.find_timezone({'lat': lat, 'lng': lng})
-        return timezone
+    #def get_timezone(self,lat,lng):
+        #geonames_client = geonames.GeonamesClient('piData')
+        #timezone = geonames_client.find_timezone({'lat': lat, 'lng': lng})
+        #return timezone
 
     def buoy_info(self):
 
