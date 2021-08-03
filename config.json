@@ -8,6 +8,7 @@
         ],
         "type": "range-dec",
         "name": "WATER_TEMPERATURE",
+        "correction_value":"9.86",
         "experimental": false
     },
     "SEN0257": {
@@ -19,12 +20,14 @@
         ],
         "type": "range",
         "name": "WAVE_HEIGHT",
+        "correction_value":"8.82",
         "experimental": false
     },
     "SEN0140": {
         "active": true,
         "unit": "Degree",
         "name": "IMU",
+        "correction_value":"9.16",
         "experimental": false
     },
     "SEN0165": {
@@ -36,6 +39,7 @@
         ],
         "type": "range",
         "name": "ORP",
+        "correction_value":"4.56",
         "experimental": false
     },
     "SEN0169": {
@@ -47,6 +51,7 @@
         ],
         "type": "range",
         "name": "PH",
+        "correction_value":"2.53",
         "experimental": false
     },
     "SEN0161-V2": {
@@ -58,6 +63,7 @@
         ],
         "type": "range",
         "name": "PH",
+        "correction_value":"3.65",
         "experimental": false
     },
     "DFR0300": {
@@ -69,6 +75,7 @@
         ],
         "type": "range",
         "name": "CONDUCTIVITY",
+        "correction_value":"2.35",
         "experimental": false
     },
     "SEN0175": {
@@ -80,6 +87,7 @@
         ],
         "type": "range",
         "name": "UV",
+        "correction_value":"0.65",
         "experimental": false
     },
     "TEL0097": {
@@ -88,6 +96,7 @@
         "data": null,
         "type": "geo",
         "name": "POSITION",
+        "correction_value":null,
         "experimental": false
     },
     "TEL0113": {
@@ -99,6 +108,7 @@
         ],
         "type": "range",
         "name": "GSM",
+        "correction_value":null,
         "experimental": false
     },
     "SEN0236": {
@@ -114,6 +124,7 @@
         ],
         "type": "range",
         "name": "AIR_PRESSURE",
+        "correction_value":"0.23",
         "experimental": false
     },
     "SEN0228": {
@@ -125,6 +136,7 @@
         ],
         "type": "range-dec",
         "name": "AMBIENT_LIGHT",
+        "correction_value":"1.02",
         "experimental": false
     },
     "SEN0237-A": {
@@ -136,6 +148,7 @@
         ],
         "type": "range",
         "name": "DISSOLVED_OXYGEN",
+        "correction_value":null,
         "experimental": false
     },
     "SEN0216": {
@@ -147,6 +160,7 @@
         ],
         "type": "range",
         "name": "WATER_CURRENT",
+        "correction_value":null,
         "experimental": true
     },
     "SEN0xxx": {
@@ -158,6 +172,7 @@
         ],
         "type": "range",
         "name": "DISSOLVED_NOX",
+        "correction_value":null,
         "experimental": true
     }
 }

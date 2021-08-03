@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 
-import json
-import sys
+from json import load, dumps
+# import sys
 from faker import Faker
-import random
-import string
+from random import uniform, randrange, choices
+from string import ascii_letters, digits
+import datetime
+import pytz
+import geonames
 
 
 class PiData:
@@ -20,7 +23,7 @@ class PiData:
 
         try:
             f = open('config.json',)
-            data = json.load(f)
+            data = load(f)
             f.close()
 
             return data
@@ -28,42 +31,52 @@ class PiData:
         except:
             return "Error reading config"
 
+    def get_timezone(self,lat,lng):
+        geonames_client = geonames.GeonamesClient('piData')
+        timezone = geonames_client.find_timezone({'lat': lat, 'lng': lng})
+        return timezone
+
     def buoy_info(self):
 
        # for sensor in self.config_data:
         # print(sensor)
 
         buoy_data = {
-            "serial_number": ''.join(random.choices(string.ascii_letters + string.digits, k=16)),
+            "serial_number": ''.join(choices(ascii_letters + digits, k=16)),
             "ip_address": self.fake.ipv4(),
-            "battery_level": "{:.2f}".format(random.uniform(0.00, 100.00)),
+            "battery_level": "{:.2f}".format(uniform(0.00, 100.00)),
             "gsm_strength": "-95.4",
             "latitude": "-36.804215",
             "longitude": "174.842076",
-            "solar_voltage": "{:.2f}".format(random.uniform(0, 12.5)),
-            "solar_amperage": "{:.2f}".format(random.uniform(0, 2.5)),
+            "solar_voltage": "{:.2f}".format(uniform(0, 12.5)),
+            "solar_amperage": "{:.2f}".format(uniform(0, 2.5)),
             "measurements": [self.__get_sensor(sensor) for sensor in self.config_data]
         }
 
-        return json.dumps(buoy_data)
+        return dumps(buoy_data)
 
     def __get_sensor(self, sensor_id):
+
+        utc_now = pytz.utc.localize(datetime.datetime.utcnow())
+
+        
 
         sensor = self.config_data[sensor_id]
 
         return {
 
             "sensor": {
-                "correction_value": "{:.2f}".format(random.uniform(0.00, 10.00)),
+                "correction_value": "{:.2f}".format(uniform(0.00, 10.00)),
                 "details": {
                     "name": sensor["name"],
                     "unit": sensor["unit"]
                 },
-                "serial_number": ''.join(random.choices(string.ascii_letters + string.digits, k=16)),
+                "serial_number": sensor_id,
                 "name": sensor["name"]
             },
-            "value":self.__get_sensor_data(sensor_id),
-            "error_text":""
+            "value": self.__get_sensor_data(sensor_id),
+            "error_text": "",
+            "datetime": utc_now.isoformat()
 
 
         }
@@ -81,13 +94,13 @@ class PiData:
                 sensor_min_range = sensor["data"][0]
                 sensor_max_range = sensor["data"][1]
 
-                return random.randrange(sensor_min_range, sensor_max_range)
+                return randrange(sensor_min_range, sensor_max_range)
 
             elif sensor_type == "range-dec":
                 sensor_min_range = sensor["data"][0]
                 sensor_max_range = sensor["data"][1]
 
-                return '{0:.2f}'.format(random.uniform(sensor_min_range, sensor_max_range))
+                return '{0:.2f}'.format(uniform(sensor_min_range, sensor_max_range))
 
             elif sensor_type == "geo":
                 return self.fake.local_latlng(country_code="AU", coords_only=True)
@@ -101,7 +114,7 @@ class PiData:
 
 def main():
 
-    #sensor_id = sys.argv[1]
+    # sensor_id = sys.argv[1]
     fakeData = PiData()
     print(fakeData.buoy_info())
     # sys.stdout.write(fakeData.get_sensor_data(sensor_id))
