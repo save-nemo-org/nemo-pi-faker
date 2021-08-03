@@ -7,7 +7,7 @@ from random import uniform, randrange, choices
 from string import ascii_letters, digits
 import datetime
 import pytz
-import geonames
+#import geonames
 
 
 class PiData:
